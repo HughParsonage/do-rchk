@@ -1,0 +1,26 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
+language: R
+r: devel
+sudo: true
+
+
+before_install:
+  - apt-get update
+  - apt-get install python-pip
+
+install:
+  - pip install wllvm
+  - git clone https://github.com/kalibera/rchk.git
+  - cd rchk/src ; env LLVM=/usr/lib/llvm-3.8 make ; cd ..
+
+sciprt:
+  - svn checkout https://svn.r-project.org/R/trunk
+  - cd trunk
+  - . ../scripts/config.inc
+  - . ../scripts/cmpconfig.inc
+  - ../scripts/build_r.sh
+  - echo 'install.packages("jpeg",repos="http://cloud.r-project.org")' | ./bin/R --slave
+  - ../scripts/check_package.sh jpeg
+
+
