@@ -11,7 +11,7 @@ before_install:
   - sudo pip install --upgrade pip
 
 install:
-  - pip install wllvm
+  - sudo pip install wllvm
   - git clone https://github.com/kalibera/rchk.git
   - cd rchk/src ; env LLVM=/usr/lib/llvm-3.8 make ; cd ..
 
