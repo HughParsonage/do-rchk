@@ -3,12 +3,14 @@
 language: R
 r: devel
 sudo: true
-
+latex: false
+pandoc: false
 
 before_install:
   - sudo apt-get update
   - sudo apt-get install python-pip
   - sudo pip install --upgrade pip
+  - sudo svn upgrade
 
 install:
   - sudo pip install wllvm
