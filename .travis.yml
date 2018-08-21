@@ -6,8 +6,8 @@ sudo: true
 
 
 before_install:
-  - apt-get update
-  - apt-get install python-pip
+  - sudo apt-get update
+  - sudo apt-get install python-pip
 
 install:
   - pip install wllvm
