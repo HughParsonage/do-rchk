@@ -10,11 +10,11 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install python-pip
   - sudo pip install --upgrade pip
-  - sudo svn upgrade
+  #- sudo svn upgrade
 
 install:
   - sudo pip install wllvm
-  - git clone https://github.com/kalibera/rchk.git
+  - git clone --depth=1 https://github.com/kalibera/rchk.git
   - cd rchk/src ; env LLVM=/usr/lib/llvm-3.8 make ; cd ..
 
 script:
